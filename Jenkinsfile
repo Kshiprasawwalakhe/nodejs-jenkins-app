@@ -14,14 +14,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE} ."
+                bat "docker build -t ${DOCKER_IMAGE} ."
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh "docker rm -f nodejs-jenkins-container || true"
-                sh "docker run -d --name nodejs-jenkins-container -p 8080:8080 ${DOCKER_IMAGE}"
+                bat "docker rm -f nodejs-jenkins-container || true"
+                bat "docker run -d --name nodejs-jenkins-container -p 8080:8080 ${DOCKER_IMAGE}"
             }
         }
     }
