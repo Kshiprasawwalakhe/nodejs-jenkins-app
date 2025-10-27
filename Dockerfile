@@ -1,7 +1,7 @@
-# Use Node 20 Alpine
+# Use Node.js LTS version
 FROM node:20-alpine
 
-# Set working directory
+# Set the working directory in the container
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json first
@@ -10,12 +10,11 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application
+# Copy the rest of the application code
 COPY . .
 
-# Expose port (if your app uses 8080)
+# Expose the port the app will run on
 EXPOSE 8080
 
-# Start the app
+# Command to run the app
 CMD ["node", "app.js"]
-
